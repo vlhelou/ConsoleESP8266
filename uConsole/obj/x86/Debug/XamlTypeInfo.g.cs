@@ -133,19 +133,19 @@ namespace uConsole.uConsole_XamlTypeInfo
         private void InitTypeTables()
         {
             _typeNameTable = new string[6];
-            _typeNameTable[0] = "uConsole.MainPage";
+            _typeNameTable[0] = "uConsole.BlankPage1";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "uConsole.pgComandos";
-            _typeNameTable[4] = "uConsole.pgConexao";
+            _typeNameTable[3] = "uConsole.MainPage";
+            _typeNameTable[4] = "uConsole.pgComandos";
             _typeNameTable[5] = "uConsole.pgPublicacao";
 
             _typeTable = new global::System.Type[6];
-            _typeTable[0] = typeof(global::uConsole.MainPage);
+            _typeTable[0] = typeof(global::uConsole.BlankPage1);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::uConsole.pgComandos);
-            _typeTable[4] = typeof(global::uConsole.pgConexao);
+            _typeTable[3] = typeof(global::uConsole.MainPage);
+            _typeTable[4] = typeof(global::uConsole.pgComandos);
             _typeTable[5] = typeof(global::uConsole.pgPublicacao);
         }
 
@@ -181,9 +181,9 @@ namespace uConsole.uConsole_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::uConsole.MainPage(); }
-        private object Activate_3_pgComandos() { return new global::uConsole.pgComandos(); }
-        private object Activate_4_pgConexao() { return new global::uConsole.pgConexao(); }
+        private object Activate_0_BlankPage1() { return new global::uConsole.BlankPage1(); }
+        private object Activate_3_MainPage() { return new global::uConsole.MainPage(); }
+        private object Activate_4_pgComandos() { return new global::uConsole.pgComandos(); }
         private object Activate_5_pgPublicacao() { return new global::uConsole.pgPublicacao(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
@@ -196,9 +196,9 @@ namespace uConsole.uConsole_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  uConsole.MainPage
+            case 0:   //  uConsole.BlankPage1
                 userType = new global::uConsole.uConsole_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_0_BlankPage1;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -211,16 +211,16 @@ namespace uConsole.uConsole_XamlTypeInfo
                 xamlType = new global::uConsole.uConsole_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  uConsole.pgComandos
+            case 3:   //  uConsole.MainPage
                 userType = new global::uConsole.uConsole_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_pgComandos;
+                userType.Activator = Activate_3_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  uConsole.pgConexao
+            case 4:   //  uConsole.pgComandos
                 userType = new global::uConsole.uConsole_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_pgConexao;
+                userType.Activator = Activate_4_pgComandos;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

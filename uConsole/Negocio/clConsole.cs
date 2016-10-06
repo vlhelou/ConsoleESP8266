@@ -4,7 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage.Streams;
 
+using Windows.Devices.SerialCommunication;
+using System.Diagnostics;
 namespace uConsole.Negocio
 {
 	class clConsole : INotifyPropertyChanged
@@ -13,20 +16,37 @@ namespace uConsole.Negocio
 		public int Velocidade { get; set; }
 		public bool Conectado { get; set; }
 		public string Diretorio { get; set; }
-		public Windows.Devices.SerialCommunication.SerialDevice _Porta;
 		public List<clArquivo> Arquivos { get; set; }
+
+
+		private SerialDevice Porta;
+		private DataWriter Grava;
+		private DataReader Le;
 
 
 		public string txtConexao => Conectado ? "Conectado" : "Não Conectado";
 
-		public Windows.Devices.SerialCommunication.SerialDevice Porta
+
+		public async void Conecta(string id)
 		{
-			get { return _Porta; }
-			set
+			Porta = await SerialDevice.FromIdAsync(id);
+			Debug.WriteLine(Porta?.PortName);
+			if (Porta != null)
 			{
-				_Porta = value;
-				OnPropertyChanged("Porta");
+				Conectado = true;
+				OnPropertyChanged("txtConexao");
+				Porta.BaudRate = 9600;
+				Porta.DataBits = 8;
+				Porta.StopBits = SerialStopBitCount.One;
+				Porta.Parity = SerialParity.None;
+				Porta.Handshake = SerialHandshake.None;
+				Porta.ReadTimeout = TimeSpan.FromMilliseconds(1000);
+				Porta.WriteTimeout = TimeSpan.FromMilliseconds(1000);
+				Le = new DataReader(Porta.InputStream);
+				Grava = new DataWriter(Porta.OutputStream);
+
 			}
+
 		}
 
 
