@@ -68,14 +68,14 @@
 				<RowDefinition Height="*"/>
 			</Grid.RowDefinitions>
 			<StackPanel Orientation="Horizontal" Grid.Row="0"   VerticalAlignment="Top" HorizontalAlignment="Left">
-				<TextBox x:ConnectionId='3' x:Name="comando" Width="330"  />
+				<TextBox x:ConnectionId='3' x:Name="comando" Width="330" Text="=node.info()"  />
 				<Button x:ConnectionId='4' FontFamily="Segoe MDL2 Assets" Content="&#xE10B;"
-					Width="50" Height="50" Background="Transparent"                        />
+					Width="50" Height="50" Background="Transparent"                    />
 			</StackPanel>
 			<Border Background="Black" Grid.Row="1" Grid.Column="0" >
 				<TextBlock x:ConnectionId='2' 
 					x:Name="Saida" 
-					Text="Saida" 
+					Text="{Binding Path=Saida}" 
 					TextWrapping="Wrap" 
 					ScrollViewer.HorizontalScrollBarVisibility="Auto" 
 					ScrollViewer.VerticalScrollBarVisibility="Auto"  

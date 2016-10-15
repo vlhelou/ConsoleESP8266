@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Devices.SerialCommunication;
 using Windows.Devices.Enumeration;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,13 +27,16 @@ namespace uConsole
 	/// </summary>
 	public sealed partial class MainPage : Page
 	{
-		private Negocio.clConsole Console = new Negocio.clConsole();
+		private Negocio.clConsole Console ;
 		private ObservableCollection<DeviceInformation> seriais = new ObservableCollection<DeviceInformation>();
+		private CancellationTokenSource ReadCancellationTokenSource;
+
 
 		public MainPage()
 		{
 			InitializeComponent();
 			listaSeriais();
+			Console = new Negocio.clConsole(ReadCancellationTokenSource);
 			cbSeriais.ItemsSource = seriais;
 			Console.Conectado = false;
 			DataContext = Console;
@@ -78,8 +82,34 @@ namespace uConsole
 			var serial = (DeviceInformation)cbSeriais.SelectedItem;
 			Console.Conecta(serial.Id);
 		}
+		private void DesConnecta_Click(object sender, RoutedEventArgs e)
+		{
+			//var serial = (DeviceInformation)cbSeriais.SelectedItem;
+			//Console.Conecta(serial.Id);
+			Console.DesConecta();
+		}
 
+		//private void Recebe_Click(object sender, RoutedEventArgs e)
+		//{
+		//	Console.Lendo();
+		//}
 
+		private void Envia_Click(object sender, RoutedEventArgs e)
+		{
+			ReadCancellationTokenSource = new CancellationTokenSource();
+			Console.Envia(comando.Text);
+		}
+
+		private void CancelReadTask()
+		{
+			if (ReadCancellationTokenSource != null)
+			{
+				if (!ReadCancellationTokenSource.IsCancellationRequested)
+				{
+					ReadCancellationTokenSource.Cancel();
+				}
+			}
+		}
 
 	}
 

@@ -1,0 +1,1 @@
+E:\GitHub\ConsoleESP8266\uConsole\uConsole.csproj;x64

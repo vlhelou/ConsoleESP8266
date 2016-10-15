@@ -28,13 +28,13 @@
     <AppXManifest Include="E:\GitHub\ConsoleESP8266\uConsole\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-06T05:58:55.914</Modified>
+      <Modified>2016-10-07T04:16:34.725</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\GitHub\ConsoleESP8266\uConsole\bin\x86\Debug\uConsole.exe">
       <PackagePath>entrypoint\uConsole.exe</PackagePath>
-      <Modified>2016-10-06T05:58:55.401</Modified>
+      <Modified>2016-10-07T04:16:34.502</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\vlhel\.nuget\packages\Microsoft.CSharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -532,7 +532,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\GitHub\ConsoleESP8266\uConsole\bin\x86\Debug\uConsole.xr.xml">
       <PackagePath>uConsole.xr.xml</PackagePath>
-      <Modified>2016-10-06T05:57:00.034</Modified>
+      <Modified>2016-10-07T03:48:04.940</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -541,11 +541,11 @@
     <AppxPackagedFile Include="E:\GitHub\ConsoleESP8266\uConsole\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-06T05:58:55.770</Modified>
+      <Modified>2016-10-07T03:48:06.071</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\GitHub\ConsoleESP8266\uConsole\bin\x86\Debug\Core\uConsole.exe">
       <PackagePath>uConsole.exe</PackagePath>
-      <Modified>2016-10-06T05:58:55.911</Modified>
+      <Modified>2016-10-07T04:16:34.723</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

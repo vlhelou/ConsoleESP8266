@@ -195,7 +195,6 @@ E:\GitHub\ConsoleESP8266\uConsole\obj\x86\Debug\pgComandos.xaml
 E:\GitHub\ConsoleESP8266\uConsole\obj\x86\Debug\pgPublicacao.xaml
 E:\GitHub\ConsoleESP8266\uConsole\obj\x86\Debug\pgComandos.xbf
 E:\GitHub\ConsoleESP8266\uConsole\obj\x86\Debug\pgPublicacao.xbf
-E:\GitHub\ConsoleESP8266\uConsole\obj\x86\Debug\uConsole.csprojResolveAssemblyReference.cache
 E:\GitHub\ConsoleESP8266\uConsole\bin\x86\Debug\clrjit.dll
 E:\GitHub\ConsoleESP8266\uConsole\bin\x86\Debug\System.Buffers.dll
 E:\GitHub\ConsoleESP8266\uConsole\bin\x86\Debug\System.Diagnostics.DiagnosticSource.dll
