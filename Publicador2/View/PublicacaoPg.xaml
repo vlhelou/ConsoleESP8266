@@ -1,0 +1,31 @@
+﻿<Page x:Class="Publicador2.View.PublicacaoPg"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:local="clr-namespace:Publicador2.View"
+	  mc:Ignorable="d" 
+	  d:DesignHeight="300" d:DesignWidth="300"
+	  Title="PublicacaoPg">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="30" />
+		</Grid.RowDefinitions>
+		<StackPanel Orientation="Horizontal" Margin="10,10,0,0" Grid.Row="0">
+			<Button Content="..." Command="{Binding Path=ListaDiretorio}" />
+			<TextBlock Text="{Binding Diretorio}" />
+			<Button Content="Publica" Visibility="{Binding ShowBtnPublicacao}" Command="{Binding PublicaArquivos}" />
+		</StackPanel>
+		<StackPanel Margin="10,10,0,0" Grid.Row="1" >
+			<ListView ItemsSource="{Binding Path=Arquivos}">
+			</ListView>
+		</StackPanel>
+		<StackPanel Orientation="Vertical" Grid.Row="2">
+			<ProgressBar Margin="0,3,0,0" Minimum="1" Maximum="{Binding ArquivosTotal}" Value="{Binding ArquivosProcessados}" Height="10"  />
+			<ProgressBar Margin="0,3,0,0" Minimum="1" Maximum="{Binding LinhasTotal}" Value="{Binding LinhasProcessadas}" Height="10"  />
+		</StackPanel>
+	</Grid>
+</Page>

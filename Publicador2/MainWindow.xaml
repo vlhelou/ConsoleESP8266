@@ -1,0 +1,56 @@
+﻿<Window x:Class="Publicador2.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:Publicador2"
+		mc:Ignorable="d"
+		Title="Publicador 2" >
+
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<!--Inicio Conexao -->
+		<StackPanel Orientation="Horizontal" Margin="10,10,0,0" Grid.Row="0" Grid.ColumnSpan="2">
+			<TextBlock Text="Conexão:"  />
+			<ComboBox Margin="10,0,0,0" 
+					  SelectedIndex="{Binding PortaSelecionada, Mode=TwoWay}"
+					  ItemsSource="{Binding Path=PortasSerais}" >
+			</ComboBox>
+
+			<Button VerticalAlignment="Center" Content="refresh" Margin="10,0,0,0"  Visibility="{Binding ShowBtnRefresh}" Command="{Binding Refresh}"/>
+			<Button VerticalAlignment="Center" Content="Conecta" Margin="10,0,0,0" Visibility="{Binding ShowBtnConecta}" Command="{Binding Conecta}" />
+			<Button VerticalAlignment="Center" Content="Desconecta" Margin="10,0,0,0" Visibility="{Binding ShowBtnDesconecta}" Command="{Binding DesConecta}" />
+
+		</StackPanel>
+		<!-- Fim da conexao-->
+		<!-- Botões de apoio-->
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0">
+			<Button x:Name="btnPublicacao" Content="Publicação"  Click="btnNavega_Click" />
+			<Button x:Name="btnComando" Content="Comandos" Margin="10,0,0,0" Click="btnNavega_Click" />
+		</StackPanel>
+		<!-- Fim Botões de apoio-->
+		<Frame x:Name="FMApoio" Grid.Row="2" Grid.Column="0" Margin="10,10"  />
+
+		<!--Tela de saida -->
+		<ScrollViewer x:Name="scrSaida"  Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+			<Border Background="Black">
+				<TextBlock 
+					HorizontalAlignment="Stretch" 
+					VerticalAlignment="Stretch" Margin="0,0,0,0"
+					Text="{Binding Path=SaidaConsole}" Foreground="#FF5ED809" FontFamily="Courier New" FontWeight="Bold" DataContextChanged="TextBlock_DataContextChanged" />
+
+			</Border>
+
+		</ScrollViewer>
+
+	</Grid>
+</Window>
