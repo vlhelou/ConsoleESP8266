@@ -32,6 +32,8 @@ namespace Publicador2
 
 			publicacaoPagina = new View.PublicacaoPg();
 			comandoPagina = new View.ComandoPg();
+			viewmodel.BarraArquivo = publicacaoPagina.pbArquivo;
+			viewmodel.BarraLinha = publicacaoPagina.pbLinha;
 			comandoPagina.DataContext = viewmodel;
 			publicacaoPagina.DataContext = viewmodel;
 			viewmodel.ListaSeriais();

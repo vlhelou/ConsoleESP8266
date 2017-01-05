@@ -24,8 +24,8 @@
 			</ListView>
 		</StackPanel>
 		<StackPanel Orientation="Vertical" Grid.Row="2">
-			<ProgressBar Margin="0,3,0,0" Minimum="1" Maximum="{Binding ArquivosTotal}" Value="{Binding ArquivosProcessados}" Height="10"  />
-			<ProgressBar Margin="0,3,0,0" Minimum="1" Maximum="{Binding LinhasTotal}" Value="{Binding LinhasProcessadas}" Height="10"  />
+			<ProgressBar x:Name="pbArquivo" Margin="0,3,0,0" Minimum="0" Maximum="{Binding ArquivosTotal}" Value="{Binding ArquivosProcessados}" Height="10"  />
+			<ProgressBar x:Name="pbLinha" Margin="0,3,0,0" Minimum="0" Maximum="{Binding LinhasTotal}" Value="{Binding LinhasProcessadas}" Height="10"  />
 		</StackPanel>
 	</Grid>
 </Page>

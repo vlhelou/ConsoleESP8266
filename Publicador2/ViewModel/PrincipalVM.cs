@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Publicador2.ViewModel
 {
@@ -71,7 +73,7 @@ namespace Publicador2.ViewModel
 		public ObservableCollection<string> PortasSerais { get; set; } = new ObservableCollection<string>();
 
 		private string[] _Portas;
-		private int _PortaId=-1;
+		private int _PortaId = -1;
 		public void ListaSeriais()
 		{
 			_Portas = SerialPort.GetPortNames();
@@ -95,7 +97,8 @@ namespace Publicador2.ViewModel
 						_Porta = _Portas[_PortaId];
 						ShowBtnConecta = Visibility.Visible;
 
-					} else
+					}
+					else
 					{
 						_Porta = "";
 						ShowBtnConecta = Visibility.Collapsed;
@@ -148,7 +151,7 @@ namespace Publicador2.ViewModel
 						OnPropertyChanged(nameof(NConectado));
 						break;
 					}
-						
+
 					Thread.Sleep(100);
 				}
 
@@ -205,7 +208,7 @@ namespace Publicador2.ViewModel
 		{
 			//Retorno.Append(cn.ReadExisting());
 			int ct = 0;
-			_livre = false;
+			//_livre = false;
 			Conexao.Write(Mensagem + Environment.NewLine);
 			while ((!_livre) || (ct < 100))
 			{
@@ -218,6 +221,9 @@ namespace Publicador2.ViewModel
 
 
 		#region Publicacao 
+
+		public ProgressBar BarraArquivo { get; set; }
+		public ProgressBar BarraLinha { get; set; }
 
 		public Visibility ShowBtnPublicacao { get; set; } = Visibility.Hidden;
 
@@ -289,17 +295,20 @@ namespace Publicador2.ViewModel
 				LinhasProcessadas = 1;
 				OnPropertyChanged(nameof(LinhasTotal));
 				OnPropertyChanged(nameof(LinhasProcessadas));
-				foreach(string linha in linhas)
+				foreach (string linha in linhas)
 				{
 					Envia(linha);
 
 					LinhasProcessadas++;
 					OnPropertyChanged(nameof(LinhasProcessadas));
+					BarraLinha.Dispatcher.Invoke(DispatcherPriority.Background, new Action(() => { }));
 				}
 
 
 				ArquivosProcessados++;
+
 				OnPropertyChanged(nameof(ArquivosProcessados));
+				BarraArquivo.Dispatcher.Invoke(DispatcherPriority.Background, new Action(() => { }));
 			}
 			DataPublicacao = DateTime.Now;
 		}
