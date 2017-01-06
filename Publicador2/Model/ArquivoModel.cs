@@ -3,16 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+ using System.ComponentModel;
 using System.IO;
+
 namespace Publicador2.Model
 {
-	public class ArquivoModel 
+	public class ArquivoModel : INotifyPropertyChanged
 	{
 		public ArquivoModel(FileInfo arquivo)
 		{
 			Arquivo = arquivo;
+			OnPropertyChanged(nameof(Cor));
 		}
-		public System.IO.FileInfo Arquivo { get; set; }
+
+		public ArquivoModel(string arquivo)
+		{
+			Arquivo = new FileInfo(arquivo);
+			OnPropertyChanged(nameof(Cor));
+		}
+
+		public FileInfo Arquivo { get; set; }
+
+		public string Nome => Arquivo.Name;
+		public DateTime DataAlteracao => Arquivo.LastWriteTime;
+
+
+		public DateTime? DataPublicacao { get; set; }
+
+		public string Cor {
+			get
+			{
+				if (DataPublicacao == null || DataPublicacao > Arquivo.LastWriteTime)
+					return "Red";
+				return "Blue";
+			}
+		}
 		public List<string> Publica()
 		{
 			List<string> retorno = new List<string>();
@@ -32,5 +57,16 @@ namespace Publicador2.Model
 			return retorno;
 
 		}
+
+
+		protected void OnPropertyChanged(string propertyname)
+		{
+			if (PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+			}
+		}
+		public event PropertyChangedEventHandler PropertyChanged;
+
 	}
 }

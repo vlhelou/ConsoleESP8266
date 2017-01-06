@@ -7,10 +7,32 @@
 	  mc:Ignorable="d" 
 	  d:DesignHeight="300" d:DesignWidth="300"
 	  Title="ComandoPg">
+	<Page.Resources>
+		<Style TargetType="{x:Type Window}">
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="FontFamily" Value="Segoe Print" />
+		</Style>
+		<Style TargetType="TextBox">
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="FontFamily" Value="Courier New" />
 
+		</Style>
+		<Style TargetType="Button" >
+			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Background" Value="#FF13578F"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+		</Style>
+		<Style TargetType="TextBlock">
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="FontFamily" Value="Segoe Print" />
+			<Setter Property="Foreground" Value="White" />
+
+		</Style>
+
+	</Page.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="40" />
+			<RowDefinition Height="25" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
@@ -18,14 +40,15 @@
 			<ColumnDefinition Width="70" />
 		</Grid.ColumnDefinitions>
 		<StackPanel HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
-			<TextBox x:Name="comando" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Text="{Binding Path=LinhaComando, Mode=TwoWay}"  />
+			<TextBox x:Name="comando"  VerticalAlignment="Center" Text="{Binding Path=LinhaComando, Mode=TwoWay}"  />
 		</StackPanel>
 		<StackPanel Grid.Row="0" Grid.Column="1">
 			<Button 
 				FontFamily="Segoe MDL2 Assets" 
 				Content="&#xE10B;"
-				HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-				Background="Transparent" 
+				HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+				Width="70"
+				Height="20"
 				IsEnabled="{Binding Path=Conectado}"
 				Command="{Binding Path=EnviaComando}"
 				/>

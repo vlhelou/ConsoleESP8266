@@ -161,8 +161,6 @@ namespace Publicador2.ViewModel
 
 		}
 
-
-
 		public ICommand DesConecta
 		{
 			get
@@ -232,7 +230,7 @@ namespace Publicador2.ViewModel
 
 		public int LinhasTotal { get; set; }
 		public int LinhasProcessadas { get; set; }
-		public ObservableCollection<string> Arquivos { get; set; } = new ObservableCollection<string>();
+		public ObservableCollection<Model.ArquivoModel> Arquivos { get; set; } = new ObservableCollection<Model.ArquivoModel>();
 
 		public ICommand ListaDiretorio
 		{
@@ -247,13 +245,17 @@ namespace Publicador2.ViewModel
 			var dialog = new System.Windows.Forms.FolderBrowserDialog();
 
 			dialog.RootFolder = Environment.SpecialFolder.Desktop;
-			dialog.SelectedPath = @"E:\NodeMcu\Fontes\t1";
+			dialog.SelectedPath = @"C:\Temporario\Lua";
 			System.Windows.Forms.DialogResult result = dialog.ShowDialog();
 			Diretorio = dialog.SelectedPath;
 			if (result == System.Windows.Forms.DialogResult.OK)
 			{
 				Arquivos.Clear();
-				Arquivos = new ObservableCollection<string>(System.IO.Directory.GetFiles(Diretorio, "*.lua"));
+				foreach(string arq in System.IO.Directory.GetFiles(Diretorio, "*.lua"))
+				{
+					Model.ArquivoModel item = new Model.ArquivoModel(arq);
+					Arquivos.Add(item);
+				}
 				ShowBtnPublicacao = Visibility.Visible;
 
 				OnPropertyChanged(nameof(Diretorio));

@@ -35,8 +35,10 @@ namespace Publicador2
 			viewmodel.BarraArquivo = publicacaoPagina.pbArquivo;
 			viewmodel.BarraLinha = publicacaoPagina.pbLinha;
 			comandoPagina.DataContext = viewmodel;
+
 			publicacaoPagina.DataContext = viewmodel;
 			viewmodel.ListaSeriais();
+			
 			
 		}
 
