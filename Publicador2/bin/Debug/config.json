@@ -1,0 +1,20 @@
+{
+    "Comandos": [
+        {
+            "Nome": "Para 0",
+            "Valor": "=tmr.stop(0)"
+        },
+        {
+            "Nome": "Start 0",
+            "Valor": "=tmr.start(0)"
+        },
+        {
+            "Nome": "Do teste",
+            "Valor": "=dofile(\"teste.lua\")"
+        },
+        {
+            "Nome": "Do Init",
+            "Valor": "=dofile(\"init.lua\")"
+        }
+    ]
+}

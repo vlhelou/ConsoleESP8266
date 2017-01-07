@@ -7,29 +7,6 @@
 	  mc:Ignorable="d" 
 	  d:DesignHeight="300" d:DesignWidth="300"
 	  Title="ComandoPg">
-	<Page.Resources>
-		<Style TargetType="{x:Type Window}">
-			<Setter Property="FontSize" Value="15"/>
-			<Setter Property="FontFamily" Value="Segoe Print" />
-		</Style>
-		<Style TargetType="TextBox">
-			<Setter Property="FontSize" Value="15"/>
-			<Setter Property="FontFamily" Value="Courier New" />
-
-		</Style>
-		<Style TargetType="Button" >
-			<Setter Property="Foreground" Value="White" />
-			<Setter Property="Background" Value="#FF13578F"/>
-			<Setter Property="FontWeight" Value="Bold"/>
-		</Style>
-		<Style TargetType="TextBlock">
-			<Setter Property="FontSize" Value="15"/>
-			<Setter Property="FontFamily" Value="Segoe Print" />
-			<Setter Property="Foreground" Value="White" />
-
-		</Style>
-
-	</Page.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="25" />
@@ -52,6 +29,19 @@
 				IsEnabled="{Binding Path=Conectado}"
 				Command="{Binding Path=EnviaComando}"
 				/>
+		</StackPanel>
+		<StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+			<ListBox  
+				ItemsSource="{Binding Comandos}" 
+				Background="#FF44443D" 
+				SelectedItem="{Binding SelecionaComando,Mode=TwoWay}" 
+				FontFamily="Courier New">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Resumo}"/>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</StackPanel>
 	</Grid>
 </Page>

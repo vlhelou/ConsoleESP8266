@@ -12,13 +12,31 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-
+using Newtonsoft.Json.Linq;
 namespace Publicador2.ViewModel
 {
 	public class PrincipalVM : INotifyPropertyChanged
 	{
 
+		public PrincipalVM()
+		{
+			string origem = System.AppDomain.CurrentDomain.BaseDirectory + "config.json";
+			if (System.IO.File.Exists(origem))
+			{
+				JObject origemComando = JObject.Parse(System.IO.File.ReadAllText(origem));
+				List<Model.ComandosModel> prelista = new List<Model.ComandosModel>();
+				foreach (var cmd in origemComando["Comandos"])
+				{
+					prelista.Add(cmd.ToObject<Model.ComandosModel>());
+				}
+				Comandos = new ObservableCollection<Model.ComandosModel>(prelista.OrderBy(p=>p.Nome).ToList());
+				OnPropertyChanged(nameof(Comandos));
+			}
+		}
+
 		private bool _livre = true;
+
+		#region Comandos
 		private string _LinhaComando = "=node.info()";
 
 		public string LinhaComando
@@ -48,6 +66,18 @@ namespace Publicador2.ViewModel
 			}
 		}
 
+		public Model.ComandosModel SelecionaComando {
+			
+			set
+			{
+				_LinhaComando = value.Valor;
+				OnPropertyChanged(nameof(LinhaComando));
+				ClickEnviaComando();
+			}
+		}
+		public ObservableCollection<Model.ComandosModel> Comandos { get; set; } = new ObservableCollection<Model.ComandosModel>();
+
+		#endregion
 
 
 		#region BarraSuperior
@@ -73,7 +103,6 @@ namespace Publicador2.ViewModel
 		public ObservableCollection<string> PortasSerais { get; set; } = new ObservableCollection<string>();
 
 		private string[] _Portas;
-		private int _PortaId = -1;
 		public void ListaSeriais()
 		{
 			_Portas = SerialPort.GetPortNames();
@@ -82,32 +111,28 @@ namespace Publicador2.ViewModel
 			OnPropertyChanged(nameof(PortasSerais));
 		}
 
-		public string _Porta { get; set; }
-
-		public int PortaSelecionada
-		{
-			get { return _PortaId; }
+		private string _Porta;
+		public string Porta {
+			get { return _Porta; }
 			set
 			{
-				if (_PortaId != value)
+				if (_Porta != value)
 				{
-					_PortaId = value;
-					if (_PortaId >= 0)
+					_Porta = value;
+					if (string.IsNullOrEmpty(_Porta))
 					{
-						_Porta = _Portas[_PortaId];
-						ShowBtnConecta = Visibility.Visible;
-
-					}
-					else
-					{
-						_Porta = "";
 						ShowBtnConecta = Visibility.Collapsed;
-
+					} else
+					{
+						ShowBtnConecta = Visibility.Visible;
 					}
 					OnPropertyChanged(nameof(ShowBtnConecta));
+					OnPropertyChanged(nameof(Porta));
 				}
 			}
 		}
+
+
 		private SerialPort Conexao;
 
 		public ICommand Refresh
@@ -132,7 +157,7 @@ namespace Publicador2.ViewModel
 
 		private void ConectaClick()
 		{
-			Conexao = new SerialPort(_Porta, 9600);
+			Conexao = new SerialPort(Porta, 9600);
 			if (!Conexao.IsOpen)
 			{
 				Conexao.Open();
@@ -245,13 +270,13 @@ namespace Publicador2.ViewModel
 			var dialog = new System.Windows.Forms.FolderBrowserDialog();
 
 			dialog.RootFolder = Environment.SpecialFolder.Desktop;
-			dialog.SelectedPath = @"C:\Temporario\Lua";
+			dialog.SelectedPath = @"E:\Temporario";
 			System.Windows.Forms.DialogResult result = dialog.ShowDialog();
 			Diretorio = dialog.SelectedPath;
 			if (result == System.Windows.Forms.DialogResult.OK)
 			{
 				Arquivos.Clear();
-				foreach(string arq in System.IO.Directory.GetFiles(Diretorio, "*.lua"))
+				foreach (string arq in System.IO.Directory.GetFiles(Diretorio, "*.lua"))
 				{
 					Model.ArquivoModel item = new Model.ArquivoModel(arq);
 					Arquivos.Add(item);

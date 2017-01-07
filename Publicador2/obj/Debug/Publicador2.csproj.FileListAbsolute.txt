@@ -34,3 +34,6 @@ C:\GitHub\ConsoleESP8266\Publicador2\obj\Debug\View\PublicacaoPg.baml
 C:\GitHub\ConsoleESP8266\Publicador2\obj\Debug\Publicador2.g.resources
 C:\GitHub\ConsoleESP8266\Publicador2\obj\Debug\Publicador2.Properties.Resources.resources
 C:\GitHub\ConsoleESP8266\Publicador2\obj\Debug\Publicador2.csproj.GenerateResource.Cache
+E:\GitHub\ConsoleESP8266\Publicador2\obj\Debug\App.baml
+E:\GitHub\ConsoleESP8266\Publicador2\bin\Debug\Newtonsoft.Json.dll
+E:\GitHub\ConsoleESP8266\Publicador2\bin\Debug\Newtonsoft.Json.xml
