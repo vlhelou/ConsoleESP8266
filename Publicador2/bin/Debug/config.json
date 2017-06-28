@@ -1,6 +1,10 @@
 {
     "Comandos": [
         {
+            "Nome": "Info",
+            "Valor": "=node.info()"
+        },
+        {
             "Nome": "Para 0",
             "Valor": "=tmr.stop(0)"
         },

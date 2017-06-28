@@ -37,7 +37,7 @@ namespace Publicador2.ViewModel
 		private bool _livre = true;
 
 		#region Comandos
-		private string _LinhaComando = "=node.info()";
+		private string _LinhaComando = "";
 
 		public string LinhaComando
 		{
@@ -235,7 +235,7 @@ namespace Publicador2.ViewModel
 			Conexao.Write(Mensagem + Environment.NewLine);
 			while ((!_livre) || (ct < 100))
 			{
-				Thread.Sleep(10);
+				Thread.Sleep(1);
 				ct++;
 			}
 		}
@@ -270,7 +270,7 @@ namespace Publicador2.ViewModel
 			var dialog = new System.Windows.Forms.FolderBrowserDialog();
 
 			dialog.RootFolder = Environment.SpecialFolder.Desktop;
-			dialog.SelectedPath = @"E:\Temporario";
+			dialog.SelectedPath = @"E:\NodeMcu\Fontes\I2C";
 			System.Windows.Forms.DialogResult result = dialog.ShowDialog();
 			Diretorio = dialog.SelectedPath;
 			if (result == System.Windows.Forms.DialogResult.OK)

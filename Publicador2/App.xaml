@@ -4,10 +4,6 @@
 			 xmlns:local="clr-namespace:Publicador2"
 			 StartupUri="MainWindow.xaml">
 	<Application.Resources>
-		<Style TargetType="{x:Type Window}">
-			<Setter Property="FontSize" Value="15"/>
-			<Setter Property="FontFamily" Value="Segoe Print" />
-		</Style>
 		<Style TargetType="Button" >
 			<Setter Property="Foreground" Value="White" />
 			<Setter Property="Background" Value="#FF13578F"/>
@@ -15,18 +11,6 @@
 			<Setter Property="Width" Value="100"/>
 			<Setter Property="FontWeight" Value="Bold"/>
 		</Style>
-		<Style TargetType="TextBlock">
-			<Setter Property="FontSize" Value="15"/>
-			<Setter Property="FontFamily" Value="Segoe Print" />
-			<Setter Property="Foreground" Value="White" />
 
-		</Style>
-		<Style TargetType="ComboBox">
-			<Setter Property="Foreground" Value="Black" />
-		</Style>
-		<Style TargetType="DataGrid">
-			<Setter Property="FontSize" Value="15"/>
-			<Setter Property="FontFamily" Value="Segoe Print" />
-		</Style>
 	</Application.Resources>
 </Application>
