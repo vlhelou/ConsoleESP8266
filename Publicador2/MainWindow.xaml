@@ -26,10 +26,10 @@
 					  MinWidth="70"
 					  Background="#FF44443D"/>
 			<Button VerticalAlignment="Center" Content="refresh" Margin="10,0,0,0"  Visibility="{Binding ShowBtnRefresh}" Command="{Binding Refresh}"  />
-
 			<Button VerticalAlignment="Center" Content="Conecta" Margin="10,0,0,0" Visibility="{Binding ShowBtnConecta}" Command="{Binding Conecta}"  />
 			<Button VerticalAlignment="Center" Content="Desconecta" Margin="10,0,0,0" Visibility="{Binding ShowBtnDesconecta}" Command="{Binding DesConecta}"  />
-
+            <RadioButton IsChecked="{Binding Path=ModoLua, Mode=TwoWay}" Content="Lua" Visibility="{Binding ShowBtnRefresh}" VerticalAlignment="Center" Margin="15,0,0,0" />
+            <RadioButton IsChecked="{Binding Path=ModoPython, Mode=TwoWay}" Content="Python" Visibility="{Binding ShowBtnRefresh}" VerticalAlignment="Center" Margin="15,0,0,0"  />
 		</StackPanel>
 		<!-- Fim da conexao-->
 		<!-- Botões de apoio-->
@@ -46,7 +46,7 @@
 				<TextBlock 
 					HorizontalAlignment="Stretch" 
 					VerticalAlignment="Stretch" Margin="0,0,0,0"
-					Text="{Binding Path=SaidaConsole}" Foreground="Black" FontFamily="Courier New" FontWeight="Bold" DataContextChanged="TextBlock_DataContextChanged" />
+					Text="{Binding Path=SaidaConsole}" Foreground="Black" FontFamily="Courier New" FontWeight="Bold" />
 
 			</Border>
 

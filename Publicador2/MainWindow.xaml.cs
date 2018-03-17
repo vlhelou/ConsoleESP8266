@@ -63,7 +63,8 @@ namespace Publicador2
 		{
 			scrSaida.ScrollToBottom();
 		}
-	}
+
+    }
 
 
 }
